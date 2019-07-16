@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body style="background-color:#000000;">
+  <head>
+    <meta charset="utf-8">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .imgbox {
+        display: grid;
+        height: 100%;
+    }
+    .center-fit {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+  </style>
+    <title></title>
+  </head>
+
+<h2 style="color:white;"> Alpha Blog   </h2>
+
+<body>
+
+  <div class="topnav">
+    <a class="active" href="<%=root_path%>">Home</a>
+    <a href="">Contact</a>
+    <a href="<%=about_path%>">About</a>
+  </div>
+
+  <div class="imgbox">
+    <img class="center-fit" src="/forest.jpg">
+  </div>
+</body>
+</html>
+
+ <!--<%= link_to 'About', about_path %>-->
