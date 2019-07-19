@@ -6,10 +6,20 @@ class ArticlesController < ApplicationController # < ApplicationController means
 
   #this method saves article then the attributes are passed to the below params method
   def create
-    #render plain: params[:article].inspect # this displays what's being passed into controller
     @article = Article.new(article_params)
-    @article.save
-    #redirect_to articles_show(@article)
+    #@article.save
+
+    if @article.save
+      flash[:notice] = "Article was successfully created" #handle view in application.html.erb
+      redirect_to article_path(@article)
+    else
+      render 'new'
+    end
+
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 
   private
