@@ -40,6 +40,13 @@ def index
   @all_articles = Article.all
 end
 
+def destroy
+  @article = Article.find(params[:id])
+  @article.destroy
+  redirect_to articles_path
+  flash["notice"] = "Article deleted"
+end
+
   private
     def article_params
       params.require(:article).permit(:title, :description)
