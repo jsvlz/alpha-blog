@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController # < ApplicationController means from subclass...
   #this new method just initializes @article
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+
   def new
     @article = Article.new
   end
@@ -19,15 +21,15 @@ class ArticlesController < ApplicationController # < ApplicationController means
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = set_article
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = set_article
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article =
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated" #handle view in application.html.erb
       redirect_to article_path(@article)
@@ -41,13 +43,17 @@ def index
 end
 
 def destroy
-  @article = Article.find(params[:id])
+  @article = set_article
   @article.destroy
   redirect_to articles_path
   flash["notice"] = "Article deleted"
 end
 
   private
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
     def article_params
       params.require(:article).permit(:title, :description)
     end
