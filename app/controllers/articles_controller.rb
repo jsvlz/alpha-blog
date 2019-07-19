@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController # < ApplicationController means
     #render plain: params[:article].inspect # this displays what's being passed into controller
     @article = Article.new(article_params)
     @article.save
-    redirect_to articles_show(@article)
+    #redirect_to articles_show(@article)
   end
 
   private
