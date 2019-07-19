@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#home'
-  get 'about', to: 'pages#about' #or can do: get 'pages/about' 
+  get 'about', to: 'pages#about' #or can do: get 'pages/about'
+
+  resources :articles
 
 end
