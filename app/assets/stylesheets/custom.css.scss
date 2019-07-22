@@ -60,6 +60,14 @@ $navbar-default-bg: #3174B8;
   list-style: none;
 }
 
+.article-actions{
+  border-top: 1px solid #3174B8;
+  padding-top: 5px;
+}
+
+.desc{
+  margin-top: 0;
+}
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
