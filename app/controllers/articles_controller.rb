@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController # < ApplicationController means
     #@article.save
 
     if @article.save
-      flash[:notice] = "Article was successfully created" #handle view in application.html.erb
+      flash[:success] = "Article was successfully created" #handle view in application.html.erb
       redirect_to article_path(@article)
     else
       render 'new'
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController # < ApplicationController means
   def update
     @article =
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated" #handle view in application.html.erb
+      flash[:success] = "Article was successfully updated" #handle view in application.html.erb
       redirect_to article_path(@article)
     else
       render 'edit'
@@ -46,7 +46,7 @@ def destroy
   @article = set_article
   @article.destroy
   redirect_to articles_path
-  flash["notice"] = "Article deleted"
+  flash["danger"] = "Article deleted"
 end
 
   private
