@@ -8,7 +8,9 @@ class ArticlesController < ApplicationController # < ApplicationController means
 
   #this method saves article then the attributes are passed to the below params method
   def create
+    #debugger
     @article = Article.new(article_params)
+    @article.user = User.first
     #@article.save
 
     if @article.save
