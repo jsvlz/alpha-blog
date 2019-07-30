@@ -28,6 +28,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @all_users = User.all
+  end
+
+  def show
+    @user = set_user
+  end
+
   private
   def user_params
     params.require(:user).permit(:username,:email,:password)
