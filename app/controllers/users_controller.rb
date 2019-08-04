@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:edit, :update, :show]
+  before_action :require_same_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -15,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = set_user
+    #@user = set_user #don't need to call here since specifying above in the before action
   end
 
   def update
-    @user = set_user
+    #@user = set_user #don't need to call here since specifying above in the before action
     if @user.update(user_params)
       flash[:success] = "Your account was successfully updated"
       redirect_to articles_path
@@ -34,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = set_user
+    #@user = set_user #don't need to call here since specifying above in the before action
     @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
@@ -45,6 +48,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "You can only edit your own user account"
+      redirect_to root_path
+    end
   end
 
 end
