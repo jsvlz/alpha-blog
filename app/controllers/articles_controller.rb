@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController # < ApplicationController means
   before_action :set_article, only: [:edit, :update, :show, :destroy]
 
   def new
-    @article = Article.new
+    @article = Article.all
   end
 
   #this method saves article then the attributes are passed to the below params method
@@ -41,7 +41,8 @@ class ArticlesController < ApplicationController # < ApplicationController means
   end
 
 def index
-  @all_articles = Article.all
+  #@articles = Article.all #will show all articles
+  @articles = Article.paginate(page: params[:page], per_page: 5) #uses pagiate ruby gem to automatically paginate
 end
 
 def destroy

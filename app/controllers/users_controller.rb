@@ -29,11 +29,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @all_users = User.all
+    #@users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5) #uses pagiate ruby gem to automatically paginate
   end
 
   def show
     @user = set_user
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
   private
