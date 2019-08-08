@@ -95,12 +95,14 @@ $navbar-default-bg: #3174B8;
   padding-left: 0;
 }
 
-.badge{
-  background-color: #fff;
+.label-as-badge {
+    border-radius: 1em;
+}
+
+.label-pill{
   text-trasnform: uppercase;
   letter-spacing: -1px;
-  font-weight: bold;
-  color: #fff;
+    color: #fff;
 }
 
 .input_checkbox input{
