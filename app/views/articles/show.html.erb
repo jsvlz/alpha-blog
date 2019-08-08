@@ -12,16 +12,21 @@
           <li class="article-title">
             <%= link_to @article.user.username, user_path(@article.user) %>
           </li>
-          <!-- <li><small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small></li> -->
+          <li><small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small></li>
         </div>
       </div>
     </ul>
   <% end %>
 
-  <h4 class="desc"><strong>Description:</strong></h4>
-    <hr>
-      <%= simple_format(@article.description) %>
-    </hr>
+  <h4 class="center"><strong>Description:</strong></h4>
+  <hr>
+    <%= simple_format(@article.description, {}, wrapper_tag: "p") %>
+  </hr>
+
+
+  <% if @article.categories.any? %>
+    <p>Categories: <%= render @article.categories %></p> <!--shortcut to show all categories instead of using .each -->
+  <% end %>
 
   <div class="article-actions">
     <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
